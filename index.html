@@ -3,224 +3,396 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>188 AI Agent Skills for OpenClaw — Free & Open Source</title>
-    <meta name="description" content="188 production-tested AI agent skills for OpenClaw. Orchestrator, coding agents, DevOps, security, and more. Free, open-source, MIT license.">
+    <title>188 AI Agent Skills for OpenClaw</title>
+    <meta name="description" content="188 free, open-source AI agent skills for OpenClaw. Install in one command. Python, React, DevOps, Security, and 15 categories more.">
     <meta property="og:title" content="188 AI Agent Skills for OpenClaw">
-    <meta property="og:description" content="Production-tested AI skills: Python, React, DevOps, Security, AI/ML + Orchestrator V5 that coordinates them all.">
+    <meta property="og:description" content="Free, open-source. Install in one command. Tested on real projects.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mtsatryan.github.io/openclaw-ai-agents/">
     <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
         :root {
-            --bg: #0d1117; --surface: #161b22; --border: #30363d;
-            --text: #e6edf3; --text-muted: #8b949e; --accent: #58a6ff;
-            --green: #3fb950; --orange: #d29922; --red: #f85149;
+            --bg: #111;
+            --surface: #1a1a1a;
+            --border: #2a2a2a;
+            --text: #d4d4d4;
+            --text-dim: #737373;
+            --accent: #3b82f6;
+            --white: #f5f5f5;
+            --mono: 'JetBrains Mono', monospace;
         }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
         a { color: var(--accent); text-decoration: none; }
         a:hover { text-decoration: underline; }
 
+        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+        /* ── Hero ── */
         .hero {
-            text-align: center; padding: 80px 20px 60px;
-            background: linear-gradient(180deg, #161b22 0%, #0d1117 100%);
+            padding: 100px 24px 80px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.4em;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+        .hero .subtitle {
+            font-size: 1.15em;
+            color: var(--text-dim);
+            max-width: 520px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+        .hero .cta-row {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-size: 0.95em;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-primary { background: var(--accent); color: #fff; }
+        .btn-primary:hover { background: #2563eb; text-decoration: none; }
+        .btn-ghost { background: transparent; border: 1px solid var(--border); color: var(--text); }
+        .btn-ghost:hover { border-color: #444; text-decoration: none; }
+
+        /* ── Numbers ── */
+        .numbers {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            padding: 40px 24px;
+            border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
         }
-        .hero h1 { font-size: 2.5em; margin-bottom: 16px; }
-        .hero h1 span { color: var(--accent); }
-        .hero p { font-size: 1.2em; color: var(--text-muted); max-width: 600px; margin: 0 auto 32px; }
-        .hero-stats { display: flex; justify-content: center; gap: 40px; margin-bottom: 32px; flex-wrap: wrap; }
-        .stat { text-align: center; }
-        .stat-num { font-size: 2em; font-weight: 700; color: var(--green); }
-        .stat-label { color: var(--text-muted); font-size: 0.9em; }
-        .cta { display: inline-block; background: var(--accent); color: #fff; padding: 12px 32px; border-radius: 6px; font-size: 1.1em; font-weight: 600; margin: 0 8px; }
-        .cta:hover { background: #79c0ff; text-decoration: none; }
-        .cta-secondary { background: transparent; border: 1px solid var(--border); color: var(--text); }
-        .cta-secondary:hover { background: var(--surface); }
+        .num { text-align: center; }
+        .num strong {
+            display: block;
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--white);
+            font-family: var(--mono);
+        }
+        .num span { font-size: 0.85em; color: var(--text-dim); }
 
-        .install {
-            max-width: 700px; margin: 40px auto; padding: 0 20px;
-        }
-        .install-box {
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: 8px; padding: 20px 24px; position: relative;
-        }
-        .install-box code { color: var(--green); font-size: 0.95em; }
-        .install-box pre { white-space: pre-wrap; }
+        /* ── Sections ── */
+        section { padding: 80px 0; }
+        section + section { border-top: 1px solid var(--border); }
 
-        .categories {
-            max-width: 1000px; margin: 60px auto; padding: 0 20px;
+        .section-title {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 12px;
         }
-        .categories h2 { text-align: center; margin-bottom: 32px; font-size: 1.8em; }
-        .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
-        .cat-card {
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: 8px; padding: 20px;
-        }
-        .cat-card h3 { margin-bottom: 8px; font-size: 1.1em; }
-        .cat-card .count { color: var(--accent); font-weight: 600; }
-        .cat-card .skills { color: var(--text-muted); font-size: 0.85em; margin-top: 8px; }
-
-        .orchestrator {
-            max-width: 800px; margin: 60px auto; padding: 0 20px;
-        }
-        .orchestrator h2 { text-align: center; margin-bottom: 16px; font-size: 1.8em; }
-        .orchestrator p { text-align: center; color: var(--text-muted); margin-bottom: 24px; }
-        .orch-box {
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: 8px; padding: 24px; font-family: monospace; font-size: 0.9em;
-            white-space: pre-wrap; line-height: 1.8;
+        .section-desc {
+            color: var(--text-dim);
+            margin-bottom: 32px;
+            max-width: 560px;
         }
 
-        .features {
-            max-width: 800px; margin: 60px auto; padding: 0 20px;
+        /* ── Install ── */
+        .install-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+            overflow-x: auto;
         }
-        .features h2 { text-align: center; margin-bottom: 32px; font-size: 1.8em; }
-        .feature-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
-        .feature {
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: 8px; padding: 24px;
+        .install-block pre {
+            font-family: var(--mono);
+            font-size: 0.88em;
+            line-height: 1.7;
+            color: var(--text);
+            white-space: pre;
         }
-        .feature h3 { margin-bottom: 8px; }
-        .feature p { color: var(--text-muted); font-size: 0.95em; }
+        .install-block .comment { color: var(--text-dim); }
+        .install-block .cmd { color: var(--white); }
 
-        .footer {
-            text-align: center; padding: 40px 20px;
-            border-top: 1px solid var(--border); margin-top: 60px;
-            color: var(--text-muted); font-size: 0.9em;
+        /* ── Demo ── */
+        .demo-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .demo-bar {
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--border);
+            font-family: var(--mono);
+            font-size: 0.78em;
+            color: var(--text-dim);
+        }
+        .demo-body {
+            padding: 24px;
+            font-family: var(--mono);
+            font-size: 0.85em;
+            line-height: 1.8;
+            white-space: pre-wrap;
+            color: var(--text);
+        }
+        .demo-body .prompt { color: var(--accent); }
+        .demo-body .agent { color: var(--white); font-weight: 500; }
+        .demo-body .score { color: var(--text-dim); }
+
+        /* ── Categories ── */
+        .cat-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+        .cat-item {
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        .cat-item:nth-child(odd) { padding-right: 24px; border-right: 1px solid var(--border); }
+        .cat-item:nth-child(even) { padding-left: 24px; }
+        .cat-name { color: var(--text); font-size: 0.95em; }
+        .cat-count {
+            font-family: var(--mono);
+            font-size: 0.85em;
+            color: var(--text-dim);
         }
 
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 1.8em; }
-            .hero-stats { gap: 20px; }
-            .cat-grid, .feature-grid { grid-template-columns: 1fr; }
+        /* ── Proof ── */
+        .proof-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .proof-item {
+            background: var(--surface);
+            padding: 28px 20px;
+            text-align: center;
+        }
+        .proof-item strong {
+            display: block;
+            font-family: var(--mono);
+            font-size: 1.4em;
+            color: var(--white);
+            margin-bottom: 6px;
+        }
+        .proof-item span {
+            font-size: 0.82em;
+            color: var(--text-dim);
+            line-height: 1.5;
+        }
+
+        /* ── Footer ── */
+        footer {
+            padding: 48px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.85em;
+        }
+        footer a { color: var(--text-dim); }
+        footer a:hover { color: var(--text); }
+        .footer-links { margin-top: 8px; }
+        .footer-links a + a { margin-left: 16px; }
+
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 1.7em; }
+            .numbers { gap: 24px; }
+            .num strong { font-size: 1.5em; }
+            .cat-list { grid-template-columns: 1fr; }
+            .cat-item:nth-child(odd) { padding-right: 0; border-right: none; }
+            .cat-item:nth-child(even) { padding-left: 0; }
+            .proof-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-<section class="hero">
-    <h1><span>188</span> AI Agent Skills for OpenClaw</h1>
-    <p>Production-tested, QA-verified coding agents. From Python to Kubernetes, from security audits to video production. Free and open-source.</p>
-    <div class="hero-stats">
-        <div class="stat"><div class="stat-num">188</div><div class="stat-label">Skills</div></div>
-        <div class="stat"><div class="stat-num">15</div><div class="stat-label">Categories</div></div>
-        <div class="stat"><div class="stat-num">77K+</div><div class="stat-label">Lines of Expertise</div></div>
-        <div class="stat"><div class="stat-num">MIT</div><div class="stat-label">License</div></div>
+<header class="hero">
+    <h1>188 AI skills for OpenClaw.<br>Free. Tested. Ready to use.</h1>
+    <p class="subtitle">We built 188 agent skills covering everything from Python to Kubernetes to security audits. Each one is 50-500 lines of real, tested instructions. Not auto-generated filler. Install in one command.</p>
+    <div class="cta-row">
+        <a href="https://github.com/mtsatryan/openclaw-ai-agents" class="btn btn-primary">View on GitHub</a>
+        <a href="#install" class="btn btn-ghost">Install</a>
     </div>
-    <a href="https://github.com/mtsatryan/openclaw-ai-agents" class="cta">GitHub Repo</a>
-    <a href="#install" class="cta cta-secondary">Install Now</a>
-</section>
+</header>
 
-<section class="install" id="install">
-    <div class="install-box">
-        <pre><code># Install all 188 skills
-git clone https://github.com/mtsatryan/openclaw-ai-agents.git
-cp -r openclaw-ai-agents/*/ ~/.openclaw/skills/
-openclaw gateway restart
+<div class="numbers">
+    <div class="num"><strong>188</strong><span>skills</span></div>
+    <div class="num"><strong>15</strong><span>categories</span></div>
+    <div class="num"><strong>77,707</strong><span>lines of instructions</span></div>
+    <div class="num"><strong>0</strong><span>cost</span></div>
+</div>
 
-# Verify
-openclaw skills list | grep "ready" | wc -l
-# → 188</code></pre>
-    </div>
-</section>
+<!-- Install -->
+<section id="install">
+    <div class="container">
+        <h2 class="section-title">Install</h2>
+        <p class="section-desc">Three commands. Takes about 30 seconds.</p>
+        <div class="install-block">
+            <pre><span class="comment"># grab the repo</span>
+<span class="cmd">git clone https://github.com/mtsatryan/openclaw-ai-agents.git</span>
 
-<section class="categories">
-    <h2>Skill Categories</h2>
-    <div class="cat-grid">
-        <div class="cat-card">
-            <h3>Programming Languages <span class="count">(14)</span></h3>
-            <div class="skills">python-pro, golang-pro, rust-pro, typescript-pro, java-enterprise, cpp-pro, swift-expert, kotlin-specialist, php-pro...</div>
-        </div>
-        <div class="cat-card">
-            <h3>Frontend & Mobile <span class="count">(18)</span></h3>
-            <div class="skills">react-pro, nextjs-pro, angular-expert, vue-specialist, flutter-expert, mobile-developer, ux-designer, ui-designer...</div>
-        </div>
-        <div class="cat-card">
-            <h3>Backend & API <span class="count">(14)</span></h3>
-            <div class="skills">backend-architect, api-designer, graphql-architect, django-developer, laravel-specialist, spring-boot-engineer...</div>
-        </div>
-        <div class="cat-card">
-            <h3>Cloud & DevOps <span class="count">(14)</span></h3>
-            <div class="skills">devops-engineer, kubernetes-expert, terraform-engineer, cloud-architect, sre-engineer, monitoring-specialist...</div>
-        </div>
-        <div class="cat-card">
-            <h3>AI/ML & LLM <span class="count">(9)</span></h3>
-            <div class="skills">ai-engineer, ml-engineer, llm-architect, nlp-engineer, prompt-engineer, mlops-engineer, mcp-developer...</div>
-        </div>
-        <div class="cat-card">
-            <h3>Database & Data <span class="count">(8)</span></h3>
-            <div class="skills">postgres-pro, sql-pro, database-specialist, data-engineer, data-scientist, analytics-engineer...</div>
-        </div>
-        <div class="cat-card">
-            <h3>Testing & QA <span class="count">(7)</span></h3>
-            <div class="skills">test-engineer, e2e-test-specialist, qa-expert, test-automator, performance-tester, accessibility-auditor...</div>
-        </div>
-        <div class="cat-card">
-            <h3>Security & Compliance <span class="count">(7)</span></h3>
-            <div class="skills">security-auditor, penetration-tester, security-engineer, compliance-auditor, risk-manager...</div>
-        </div>
-        <div class="cat-card">
-            <h3>Content & Media <span class="count">(19)</span></h3>
-            <div class="skills">technical-writer, blog-writer, video-script-writer, podcast-producer, seo-specialist, social-media-manager...</div>
-        </div>
-        <div class="cat-card">
-            <h3>Agent Coordination <span class="count">(18)</span></h3>
-            <div class="skills">orchestrator-v5, multi-agent-coordinator, workflow-orchestrator, autonomous-agent, context-manager...</div>
-        </div>
-        <div class="cat-card">
-            <h3>Business & Product <span class="count">(10)</span></h3>
-            <div class="skills">product-strategist, project-manager, business-analyst, scrum-master, requirements-analyst...</div>
-        </div>
-        <div class="cat-card">
-            <h3>Specialized Domains <span class="count">(13)</span></h3>
-            <div class="skills">ecommerce-expert, healthcare-dev, game-developer, blockchain-developer, fintech-specialist, iot-engineer...</div>
+<span class="comment"># copy skills into OpenClaw</span>
+<span class="cmd">cp -r openclaw-ai-agents/*/ ~/.openclaw/skills/</span>
+
+<span class="comment"># restart and check</span>
+<span class="cmd">openclaw gateway restart</span>
+<span class="cmd">openclaw skills list</span></pre>
         </div>
     </div>
 </section>
 
-<section class="orchestrator">
-    <h2>Orchestrator V5</h2>
-    <p>One skill to rule them all. Analyzes your task, selects optimal agents, coordinates execution.</p>
-    <div class="orch-box">User: "Build a healthcare app with HIPAA compliance, React frontend, Python backend, deploy to K8s"
+<!-- Demo -->
+<section>
+    <div class="container">
+        <h2 class="section-title">What it actually looks like</h2>
+        <p class="section-desc">You describe what you need. The orchestrator picks the right skills and builds a plan. This is a real output, not a mockup.</p>
+        <div class="demo-block">
+            <div class="demo-bar">openclaw tui &mdash; orchestrator-v5</div>
+            <div class="demo-body"><span class="prompt">&gt;</span> Build a healthcare app with HIPAA compliance,
+  React frontend, Python backend, deploy to K8s
 
-Orchestrator V5 selects:
-  /healthcare-dev        99%  — HIPAA domain, PHI handling
-  /compliance-auditor    97%  — HIPAA safeguards
-  /security-engineer     96%  — Encryption, IAM, access controls
-  /python-pro            95%  — FastAPI backend
-  /kubernetes-expert     95%  — K8s with PHI isolation
-  /react-pro             93%  — Frontend, no PHI in localStorage
-  +10 more specialists...
+<span class="agent">Orchestrator V5 selected 16 specialists:</span>
 
-Creates 6-phase plan with checkpoints at each gate.</div>
-</section>
+  healthcare-dev         <span class="score">99%  HIPAA domain, PHI handling</span>
+  compliance-auditor     <span class="score">97%  HIPAA safeguards mapping</span>
+  security-engineer      <span class="score">96%  encryption, IAM, access controls</span>
+  python-pro             <span class="score">95%  FastAPI backend</span>
+  kubernetes-expert      <span class="score">95%  K8s with PHI workload isolation</span>
+  react-pro              <span class="score">93%  frontend, no PHI in localStorage</span>
+  postgres-pro           <span class="score">92%  encrypted columns, audit log</span>
+  security-auditor       <span class="score">95%  OWASP Top 10 scan</span>
+  test-engineer          <span class="score">88%  PHI boundary tests</span>
+  devops-engineer        <span class="score">88%  CI/CD with secrets management</span>
+  + 6 more
 
-<section class="features">
-    <h2>Why These Skills?</h2>
-    <div class="feature-grid">
-        <div class="feature">
-            <h3>Production-Tested</h3>
-            <p>Each skill is 50-500 lines of curated instructions, tested across real projects. Not auto-generated filler.</p>
-        </div>
-        <div class="feature">
-            <h3>Any LLM Provider</h3>
-            <p>Works with Claude, GPT, DeepSeek, Gemini, Ollama. Best results with Claude Sonnet 4.6+ or GPT-5+.</p>
-        </div>
-        <div class="feature">
-            <h3>Safe & Reviewed</h3>
-            <p>Every skill manually reviewed. No prompt injection, no malicious code. Unlike 36% of ClawHub community skills.</p>
-        </div>
-        <div class="feature">
-            <h3>Smart Orchestration</h3>
-            <p>Orchestrator V5 dynamically routes tasks to the right specialists with confidence scoring and fallback chains.</p>
+<span class="agent">Created 6-phase plan:</span>
+  Phase 0  Compliance framework (blocks everything)
+  Phase 1  HIPAA-safe architecture
+  Phase 2  Foundation (3 parallel streams)
+  Phase 3  Core features (3 parallel streams)
+  Phase 4  Security audit + testing (parallel)
+  Phase 5  Kubernetes production deployment</div>
         </div>
     </div>
 </section>
 
-<footer class="footer">
-    <p>Built by <a href="https://agent-hub.shop">MTNT Solutions FZE</a> — MIT License</p>
-    <p style="margin-top: 8px;"><a href="https://github.com/mtsatryan/openclaw-ai-agents">GitHub</a> · <a href="https://agent-hub.shop">agent-hub.shop</a></p>
+<!-- Proof -->
+<section>
+    <div class="container">
+        <h2 class="section-title">The numbers</h2>
+        <p class="section-desc">We tested this ourselves before publishing. Here's what happened.</p>
+        <div class="proof-grid">
+            <div class="proof-item">
+                <strong>188/188</strong>
+                <span>skills pass validation.<br>Zero errors.</span>
+            </div>
+            <div class="proof-item">
+                <strong>~$3</strong>
+                <span>total API cost to convert<br>and test all 188 skills.</span>
+            </div>
+            <div class="proof-item">
+                <strong>0</strong>
+                <span>prompt injection found.<br>Every skill reviewed.</span>
+            </div>
+            <div class="proof-item">
+                <strong>66</strong>
+                <span>skills include code examples<br>in references/ dirs.</span>
+            </div>
+            <div class="proof-item">
+                <strong>14</strong>
+                <span>programming languages<br>covered with dedicated skills.</span>
+            </div>
+            <div class="proof-item">
+                <strong>500</strong>
+                <span>max lines per skill.<br>Focused, not bloated.</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Categories -->
+<section>
+    <div class="container">
+        <h2 class="section-title">What's inside</h2>
+        <p class="section-desc">188 skills across 15 categories. Each one works standalone or together via the orchestrator.</p>
+        <div class="cat-list">
+            <div class="cat-item"><span class="cat-name">Content & Media</span><span class="cat-count">19</span></div>
+            <div class="cat-item"><span class="cat-name">Agent Coordination</span><span class="cat-count">18</span></div>
+            <div class="cat-item"><span class="cat-name">Frontend & Mobile</span><span class="cat-count">18</span></div>
+            <div class="cat-item"><span class="cat-name">Programming Languages</span><span class="cat-count">14</span></div>
+            <div class="cat-item"><span class="cat-name">Cloud & DevOps</span><span class="cat-count">14</span></div>
+            <div class="cat-item"><span class="cat-name">Backend & API</span><span class="cat-count">14</span></div>
+            <div class="cat-item"><span class="cat-name">Specialized Domains</span><span class="cat-count">13</span></div>
+            <div class="cat-item"><span class="cat-name">Business & Product</span><span class="cat-count">10</span></div>
+            <div class="cat-item"><span class="cat-name">AI/ML & LLM</span><span class="cat-count">9</span></div>
+            <div class="cat-item"><span class="cat-name">Database & Data</span><span class="cat-count">8</span></div>
+            <div class="cat-item"><span class="cat-name">Testing & QA</span><span class="cat-count">7</span></div>
+            <div class="cat-item"><span class="cat-name">Security & Compliance</span><span class="cat-count">7</span></div>
+            <div class="cat-item"><span class="cat-name">PowerShell & Windows</span><span class="cat-count">7</span></div>
+            <div class="cat-item"><span class="cat-name">Analysis & Research</span><span class="cat-count">6</span></div>
+            <div class="cat-item"><span class="cat-name">DevTools & Utilities</span><span class="cat-count">20</span></div>
+            <div class="cat-item"><span class="cat-name">Full skill list</span><span class="cat-count"><a href="https://github.com/mtsatryan/openclaw-ai-agents">GitHub &rarr;</a></span></div>
+        </div>
+    </div>
+</section>
+
+<!-- About -->
+<section>
+    <div class="container">
+        <h2 class="section-title">How this was built</h2>
+        <p class="section-desc" style="max-width: 100%;">
+            We originally built these as paid agents for <a href="https://agent-hub.shop">agent-hub.shop</a> — a marketplace for Claude Code, Cline, Aider, and Codex CLI. 224 agents, tested across real client projects over 6 months.
+        </p>
+        <p class="section-desc" style="max-width: 100%;">
+            Then we converted all of them to OpenClaw's skill format and decided to release them for free. The conversion was done by OpenClaw itself — it wrote the audit script, the conversion script, and ran both. 188 agents converted in one session, zero errors.
+        </p>
+        <p class="section-desc" style="max-width: 100%;">
+            Each skill is 50-500 lines of curated instructions. Not a one-line prompt. Not auto-generated. Real patterns from real projects.
+        </p>
+        <p class="section-desc" style="max-width: 100%;">
+            Works with any LLM provider you've configured in OpenClaw: Claude, GPT, DeepSeek, Gemini, or local models via Ollama.
+        </p>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>Built by MTNT Solutions FZE &middot; MIT License</p>
+        <div class="footer-links">
+            <a href="https://github.com/mtsatryan/openclaw-ai-agents">GitHub</a>
+            <a href="https://agent-hub.shop">agent-hub.shop</a>
+        </div>
+    </div>
 </footer>
 
 </body>
