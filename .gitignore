@@ -1,0 +1,8 @@
+fullstack_app/build/
+fullstack_app/.dart_tool/
+fullstack_app/.idea/
+fullstack_app/*.iml
+fullstack_app/android/.gradle/
+fullstack_app/android/local.properties
+fullstack_app/ios/Pods/
+fullstack_app/ios/Frameworks/
